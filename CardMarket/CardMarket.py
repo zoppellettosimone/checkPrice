@@ -16,7 +16,7 @@ def buttonCommand():
 #Function for check price product
 def checkPrice():
     #Hide the window
-    #root.withdraw()
+    root.withdraw()
     #Infinite loop
     while(True):
         #Find and Take the price from .html id/class in the page url
