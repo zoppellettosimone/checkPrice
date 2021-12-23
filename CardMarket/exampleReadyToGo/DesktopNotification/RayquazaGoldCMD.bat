@@ -1,0 +1,2 @@
+D:\GitHubRep\checkPrice\CardMarket\exampleReadyToGo\DesktopNotification
+python RayquazaGold.py
