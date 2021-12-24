@@ -1,0 +1,2 @@
+%CD%
+pythonw JolteonVMAX.py

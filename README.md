@@ -18,4 +18,9 @@ FOR GMAIL:
 
         The first mails will go to the "spam" folder, after marking that mail as "not dangerous" they will arrive normally.
 
+FOR BACKGROUND:
+
+        You can execute in background only ReadyToGo programs.
+        If you want to run programs in background execute "nameBackground.bat"
+
 Code modified by the program: https://github.com/iamishraqhc/AmazonPriceTracker
