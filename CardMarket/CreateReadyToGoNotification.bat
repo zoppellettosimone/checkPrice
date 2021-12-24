@@ -1,0 +1,2 @@
+%CD%
+python CreateReadyToGoNotification.py

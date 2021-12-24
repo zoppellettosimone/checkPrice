@@ -23,4 +23,9 @@ FOR BACKGROUND:
         You can execute in background only ReadyToGo programs.
         If you want to run programs in background execute "nameBackground.bat"
 
+IF YOU WANT CREATE YOUR READY TO GO FILE:
+
+        Double click in "CreateReadyToGoNotification.bat".
+        For now it is only available for cardmarket and with notifications.
+
 Code modified by the program: https://github.com/iamishraqhc/AmazonPriceTracker
