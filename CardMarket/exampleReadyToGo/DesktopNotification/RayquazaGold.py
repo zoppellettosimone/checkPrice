@@ -53,7 +53,7 @@ def checkPrice():
             time.sleep( timeSend )
             #Dopo ricontrolla
 
-#Function for Send email
+#Function for Send desktop notification
 def sendNotification(titleLink):
     notificationName = "Check Price"
     notificationTitle = "Price Down"
