@@ -6,6 +6,7 @@ from tkinter import *
 import requests
 from bs4 import BeautifulSoup
 import time
+from plyer import notification
 
 #FUNCTION:
 
