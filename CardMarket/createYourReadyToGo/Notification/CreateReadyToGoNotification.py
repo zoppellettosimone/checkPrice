@@ -19,7 +19,7 @@ def createProgram():
     #Hide the window
     root.withdraw()
     #Creation of MyReadyToGoProgram.py file from TemplateReadyToGo.py
-    copyfile("TemplateReadyToGo.py", "MyReadyToGoNotification.py")
+    copyfile("template/TemplateReadyToGoNotification.py", "MyReadyToGoNotification.py")
     
     #Read MyReadyToGoNotification.py
     with open('MyReadyToGoNotification.py', 'r') as file :
