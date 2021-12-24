@@ -1,0 +1,2 @@
+%CD%
+pip install plyer
