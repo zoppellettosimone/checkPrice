@@ -8,6 +8,12 @@ FOR NOTIFICATION:
 
         Execute "notificationinstall.bat"
 
+FOR TELEGRAM:
+
+        Go into: https://telegram.me/BotFather and follow the instructions to create your own bot (1 command "/newbot")
+        In cmd run "pip install telegram-send", after search update your "environment variables".
+        Run "telegram-send --configure" and after insert your personal token, where token is the key to access the bot, provided as soon as you create it.
+
 FOR GMAIL:
 
         Allow less secure apps for the gmail account you will be using to send emails. 
@@ -23,7 +29,7 @@ FOR BACKGROUND:
         You can execute in background only ReadyToGo programs.
         If you want to run programs in background execute "nameBackground.bat"
 
-IF YOU WANT CREATE YOUR READY TO GO FILE:
+If you want to create new Ready To Go file:
 
         Double click in "CreateReadyToGoNotification.bat".
         For now it is only available for cardmarket and with notifications.

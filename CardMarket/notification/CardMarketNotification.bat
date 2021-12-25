@@ -1,2 +1,2 @@
 %CD%
-python AmazonNotification.py
+python CardMarketNotification.py
