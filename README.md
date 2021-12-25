@@ -11,7 +11,9 @@ FOR NOTIFICATION:
 FOR TELEGRAM:
 
         Go into: https://telegram.me/BotFather and follow the instructions to create your own bot (1 command "/newbot")
+
         In cmd run "pip install telegram-send", after search update your "environment variables".
+
         Run "telegram-send --configure" and after insert your personal token, where token is the key to access the bot, provided as soon as you create it.
 
 FOR GMAIL:
@@ -24,9 +26,10 @@ FOR GMAIL:
 
         The first mails will go to the "spam" folder, after marking that mail as "not dangerous" they will arrive normally.
 
-FOR BACKGROUND:
+If you want to run application in background:
 
         You can execute in background only ReadyToGo programs.
+
         If you want to run programs in background execute "nameBackground.bat"
 
 If you want to create new Ready To Go file:
