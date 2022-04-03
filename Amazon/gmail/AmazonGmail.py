@@ -85,8 +85,6 @@ expectedPrice = Entry(root, width = 20)
 expectedPrice.pack()
 
 #Fake mail to use
-#loginMail = 'checkpricebysimonez@gmail.com'
-#loginPassword = "tost12345"
 labelLoginMail = Label(root, text="Login Email", background='#4d0000', foreground="white", padx=10, pady=10).pack()
 loginMail = Entry(root)
 loginMail.pack()

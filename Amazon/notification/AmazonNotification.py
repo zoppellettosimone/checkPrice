@@ -81,22 +81,6 @@ labelExpectedPrice = Label(root, text="Expected Price", background='#4d0000', fo
 expectedPrice = Entry(root, width = 20)
 expectedPrice.pack()
 
-#Fake mail to use
-#loginMail = 'checkpricebysimonez@gmail.com'
-#loginPassword = "tost12345"
-labelLoginMail = Label(root, text="Login Email", background='#4d0000', foreground="white", padx=10, pady=10).pack()
-loginMail = Entry(root)
-loginMail.pack()
-labelLogin_Password = Label(root, text="Login Password", background='#4d0000', foreground="white", padx=10, pady=10).pack()
-loginPassword = Entry(root, show="*")
-loginPassword.pack()
-mail_from = loginMail.get()
-
-#Mail in which you will receive notifications
-labelMailTo = Label(root, text="Mail", background='#4d0000', foreground="white", padx=10, pady=10).pack()
-mailTo = Entry(root)
-mailTo.pack()
-
 #Like Padx, Pady but between Input Label and Button Label
 skipLine = Label(root, text="", background='#4d0000', foreground="white").pack()
 
