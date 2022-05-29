@@ -1,11 +1,11 @@
 #IMPORT
 
-import re
-import smtplib
 from tkinter import *
+import re
 import requests
 from bs4 import BeautifulSoup
 import time
+from plyer import notification
 
 #FUNCTION:
 
@@ -15,17 +15,13 @@ def buttonCommand():
 
 #Function for check price product
 def checkPrice():
-    #Hide the window
-    root.withdraw()
     #Infinite loop
     while(True):
+        #Output info
+        printTime()
         #Find and Take the price from .html id/class in the page url
         page = requests.get(URL.get(), headers=headers)
         soup = BeautifulSoup(page.content, 'html.parser')
-
-        #Product Name
-        title = soup.find_all("div", {"class": "flex-grow-1"})
-        productName = str(title[0]).replace('<div class="flex-grow-1"><h1>', '').replace('<span class="h4 text-muted font-weight-normal font-italic">Regno Glaciale - Singles</span></h1></div>', '')
 
         #Search the line
         linesx = soup.find_all("dt", {"class": "col-6 col-xl-5"})
@@ -35,24 +31,34 @@ def checkPrice():
         mydivs = soup.find_all("dd", {"class": "col-6 col-xl-7"})
         #I only extract the price
         price = str(mydivs[nr]).replace('<dd class="col-6 col-xl-7">', '').replace('€</dd>', '').replace(',', '.')
-        #Cast from str to float
-        price = float(price)
-        print(price)
+        print("Current Price:", price)
+        #Se la carta ha un effettivo prezzo
+        if(price != "N/A"):
+            #Cast from str to float
+            price = float(price)
 
-        #Check if the price is less or equal than what we want
-        if (price <= float(expectedPrice.get())):
-            #Send email
-            sendNotification(productName)
-            print("OK")
-        
-        #Wait for 12 hour
-        time.sleep( timeSend )
+            #Check if the price is less or equal than what we want
+            if (price <= float(expectedPrice.get())):
+                #Send email
+                sendNotification()
+                print("Notification sent")
+            else:
+                print("Price too high")
+            
+            #Wait
+            print("Wait for next check")
+            time.sleep( timeSend )
+        else:
+            #Wait
+            print("Wait for next check")
+            time.sleep( timeSend )
+            #Dopo ricontrolla
 
 #Function for Send desktop notification
-def sendNotification(titleLink):
+def sendNotification():
     notificationName = "Check Price"
     notificationTitle = "Price Down"
-    notificationDescription = "Check for Cardmarket card"
+    notificationDescription = "Check for " + URL.get() + " (Cardmarket)"
 
     notification.notify(
         title = notificationTitle,
@@ -68,10 +74,14 @@ def sendNotification(titleLink):
 def findNumber(arr):
     for i in range(0,len(arr),1):
         contr = str(arr[i]).replace('<dt class="col-6 col-xl-5">', '').replace('</dt>', '')
-        print(contr)
         if (contr == "Da"):
             return i
     return 0
+
+def printTime():
+    print(time.ctime())
+    print("Card Name: Rayquaza Black Gold (s8b)")
+    print("Desired Price:", expectedPrice.get())
 
 #CODE
 
