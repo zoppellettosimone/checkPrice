@@ -3,7 +3,6 @@
 import requests
 from bs4 import BeautifulSoup
 import time
-from plyer import notification
 import telegram_send
 
 #FUNCTION:
@@ -18,10 +17,6 @@ def checkPrice():
         page = requests.get(link, headers=headers)
         soup = BeautifulSoup(page.content, 'html.parser')
 
-        #Product Name
-        title = soup.find_all("div", {"class": "flex-grow-1"})
-        productName = str(title[0]).replace('<div class="flex-grow-1"><h1>', '').replace('<span class="h4 text-muted font-weight-normal font-italic">Regno Glaciale - Singles</span></h1></div>', '').replace('<span class="h4 text-muted font-weight-normal font-italic">VMAX Climax - Singles</span></h1></div>', '')
-
         #Search the line
         linesx = soup.find_all("dt", {"class": "col-6 col-xl-5"})
         nr = findNumber(linesx)
@@ -30,7 +25,7 @@ def checkPrice():
         mydivs = soup.find_all("dd", {"class": "col-6 col-xl-7"})
         #I only extract the price
         price = str(mydivs[nr]).replace('<dd class="col-6 col-xl-7">', '').replace('€</dd>', '').replace(',', '.')
-        print("Prezzo attuale:", price)
+        print("Current Price:", price)
         #Se la carta ha un effettivo prezzo
         if(price != "N/A"):
             #Cast from str to float
@@ -39,10 +34,10 @@ def checkPrice():
             #Check if the price is less or equal than what we want
             if (price <= float(pricePerfect)):
                 #Send email
-                sendTelegramMessage(productName)
-                print("Notifica inviata")
+                sendTelegramMessage()
+                print("Notification sent")
             else:
-                print("Prezzo troppo alto")
+                print("Price too high")
             
             #Wait
             print("Wait for next check")
@@ -54,8 +49,8 @@ def checkPrice():
             #Dopo ricontrolla
 
 #Function for Send telegram message
-def sendTelegramMessage(titleLink):
-    sendMessage = "Price down for " + str(titleLink) + ": " + link
+def sendTelegramMessage():
+    sendMessage = "Price down for: " + link
     telegram_send.send(messages=[sendMessage])
 
 def findNumber(arr):
@@ -67,15 +62,15 @@ def findNumber(arr):
 
 def printTime():
     print(time.ctime())
-    print("Nome carta: Rayquaza Black Gold (s8b)")
-    print("Prezzo voluto:", pricePerfect)
+    print("Card Name: Rayquaza Black Gold (s8b)")
+    print("Desired Price:", pricePerfect)
 
 #CODE
 
 #Waiting time between checks, 1 hour
 timeSend = 3600
 
-pricePerfect = 350.00
+pricePerfect = 3500
 
 link = "https://www.cardmarket.com/it/Pokemon/Products/Singles/VMAX-Climax/Rayquaza-VMAX-V3-s8b284?sellerCountry=17&sellerType=0,1,2&language=7"
 headers = {

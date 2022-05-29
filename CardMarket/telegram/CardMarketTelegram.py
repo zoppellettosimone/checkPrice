@@ -12,6 +12,7 @@ def buttonCommand():
     checkPrice()
     root.destroy()
 
+'''
 #Function for check price product
 def checkPrice():
     #Hide the window
@@ -59,6 +60,66 @@ def findNumber(arr):
         if (contr == "Da"):
             return i
     return 0
+'''
+
+#Function for check price product
+def checkPrice():
+    #Hide the window
+    root.withdraw()
+    #Infinite loop
+    while(True):
+        #Output info
+        printTime()
+        #Find and Take the price from .html id/class in the page url
+        page = requests.get(URL.get(), headers=headers)
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        #Search the line
+        linesx = soup.find_all("dt", {"class": "col-6 col-xl-5"})
+        nr = findNumber(linesx)
+
+        #I extract the dd (html) which also contains the price
+        mydivs = soup.find_all("dd", {"class": "col-6 col-xl-7"})
+        #I only extract the price
+        price = str(mydivs[nr]).replace('<dd class="col-6 col-xl-7">', '').replace('€</dd>', '').replace(',', '.')
+        print("Current Price:", price)
+        #Se la carta ha un effettivo prezzo
+        if(price != "N/A"):
+            #Cast from str to float
+            price = float(price)
+
+            #Check if the price is less or equal than what we want
+            if (price <= float(expectedPrice.get())):
+                #Send email
+                sendTelegramMessage()
+                print("Notification sent")
+            else:
+                print("Price too high")
+            
+            #Wait
+            print("Wait for next check")
+            time.sleep( timeSend )
+        else:
+            #Wait
+            print("Wait for next check")
+            time.sleep( timeSend )
+            #Dopo ricontrolla
+
+#Function for Send telegram message
+def sendTelegramMessage():
+    sendMessage = "Price down for: " + str(URL.get())
+    telegram_send.send(messages=[sendMessage])
+
+def findNumber(arr):
+    for i in range(0,len(arr),1):
+        contr = str(arr[i]).replace('<dt class="col-6 col-xl-5">', '').replace('</dt>', '')
+        if (contr == "Da"):
+            return i
+    return 0
+
+def printTime():
+    print(time.ctime())
+    print("Desired Price:", expectedPrice.get())
 
 #CODE
 

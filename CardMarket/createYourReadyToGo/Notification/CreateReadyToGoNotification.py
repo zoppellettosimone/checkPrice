@@ -34,9 +34,9 @@ def createProgram():
         file.write(filedata)
 
     #Creation of MyReadyToGoProgram.bat file
-    with open("MyReadyToGoProgram.bat", "w") as file:
+    with open("MyReadyToGoNotification.bat", "w") as file:
         file.write("%CD%\n")
-        file.write("Python MyReadyToGoProgram.py\n")
+        file.write("Python MyReadyToGoNotification.py\n")
     
 
 #CODE

@@ -58,7 +58,7 @@ def sendNotification(titleLink):
         title = notificationTitle,
         message = notificationDescription,
         app_name = notificationName,
-        app_icon = "notificationIcon.ico",
+        app_icon = "..\\notificationIcon.ico",
         timeout  = 30
     )
 

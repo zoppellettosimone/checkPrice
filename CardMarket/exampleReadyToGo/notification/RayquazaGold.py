@@ -30,7 +30,7 @@ def checkPrice():
         mydivs = soup.find_all("dd", {"class": "col-6 col-xl-7"})
         #I only extract the price
         price = str(mydivs[nr]).replace('<dd class="col-6 col-xl-7">', '').replace('€</dd>', '').replace(',', '.')
-        print("Prezzo attuale:", price)
+        print("Current Price:", price)
         #Se la carta ha un effettivo prezzo
         if(price != "N/A"):
             #Cast from str to float
@@ -40,9 +40,9 @@ def checkPrice():
             if (price <= float(pricePerfect)):
                 #Send email
                 sendNotification(productName)
-                print("Notifica inviata")
+                print("Notification sent")
             else:
-                print("Prezzo troppo alto")
+                print("Price too high")
             
             #Wait
             print("Wait for next check")
@@ -57,13 +57,13 @@ def checkPrice():
 def sendNotification(titleLink):
     notificationName = "Check Price"
     notificationTitle = "Price Down"
-    notificationDescription = "Check for Rayquaza Black Gold (Cardmarket)"
+    notificationDescription = "Check for " + link + " (Cardmarket)"
 
     notification.notify(
         title = notificationTitle,
         message = notificationDescription,
         app_name = notificationName,
-        app_icon = "notificationIcon.ico",
+        app_icon = "..\\..\\notificationIcon.ico",
         timeout  = 30
     )
 
@@ -79,15 +79,15 @@ def findNumber(arr):
 
 def printTime():
     print(time.ctime())
-    print("Nome carta: Rayquaza Black Gold (s8b)")
-    print("Prezzo voluto:", pricePerfect)
+    print("Card Name: Rayquaza Black Gold (s8b)")
+    print("Desired Price:", pricePerfect)
 
 #CODE
 
 #Waiting time between checks, 1 hour
 timeSend = 3600
 
-pricePerfect = 35.00
+pricePerfect = 3000.00
 
 link = "https://www.cardmarket.com/it/Pokemon/Products/Singles/VMAX-Climax/Rayquaza-VMAX-V3-s8b284?sellerCountry=17&sellerType=0,1,2&language=7"
 headers = {
