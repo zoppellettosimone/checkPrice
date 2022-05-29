@@ -56,7 +56,7 @@ def checkPrice():
 #Function for Send email
 def sendPositiveMail(title):
     #Definition for fake email server
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP('smtp.mail.yahoo.com.', 465)
     server.ehlo()
     server.starttls()
     server.ehlo()
@@ -95,7 +95,7 @@ def printTime():
 #Waiting time between checks, 1 hour
 timeSend = 3600
 
-pricePerfect = 35.00
+pricePerfect = 3000
 
 link = "https://www.cardmarket.com/it/Pokemon/Products/Singles/VMAX-Climax/Rayquaza-VMAX-V3-s8b284?sellerCountry=17&sellerType=0,1,2&language=7"
 headers = {
