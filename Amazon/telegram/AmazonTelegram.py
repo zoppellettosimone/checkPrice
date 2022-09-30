@@ -41,7 +41,7 @@ def checkPrice():
 
 #Function for Send telegram message
 def sendTelegramMessage(titleLink):
-    sendMessage = "Price down for " + str(titleLink) + ": " + str(URL.pack())
+    sendMessage = "Price down for: " + str(URL.pack())
     telegram_send.send(messages=[sendMessage])
 
 #CODE
